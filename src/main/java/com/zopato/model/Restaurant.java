@@ -42,7 +42,7 @@ public class Restaurant {
     private String cuisineType;
 
     @Embedded
-    private ContactInformation ContactInformation;
+    private ContactInformation contactInformation;
 
     private String openingHours;
 

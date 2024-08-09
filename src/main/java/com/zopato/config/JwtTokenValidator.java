@@ -33,12 +33,13 @@ public class JwtTokenValidator extends OncePerRequestFilter {
 
         if (jwt != null) {
             jwt = jwt.substring(7);
-
+            // System.out.println("Akash------" + jwt);
             try {
                 SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
                 Claims claims = Jwts.parser().verifyWith(key).build().parseSignedClaims(jwt).getPayload();
                 String email = String.valueOf(claims.get("email"));
                 String authorities = String.valueOf(claims.get("authorities"));
+                System.out.println("claims------" + claims);
 
                 // ROLE_CUSTOMER, ROLE_ADMIN
                 List<GrantedAuthority> auth = AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);

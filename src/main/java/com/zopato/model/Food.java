@@ -34,7 +34,7 @@ public class Food {
     private List<String> images;
 
     @ManyToOne
-    private Category foodCategory;
+    private FoodCategory foodCategory;
 
     private boolean available;
 

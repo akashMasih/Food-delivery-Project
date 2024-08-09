@@ -11,6 +11,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String fullName;
     private String email;
@@ -36,7 +37,7 @@ public class User {
     private List<Order> orders = new ArrayList<Order>();
 
     @ElementCollection
-    private List<RestaurantDto> favorites = new ArrayList<>();
+    private List<RestaurantDto> favorites = new ArrayList<RestaurantDto>();
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true) // we need toremove address when user is removed
     private List<Address> addresses = new ArrayList<>();
