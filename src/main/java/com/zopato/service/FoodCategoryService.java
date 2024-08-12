@@ -10,7 +10,7 @@ public interface FoodCategoryService {
 
     // public void deleteCategory(Long id) throws Exception;
 
-    public List<FoodCategory> getCategoriesByRestaurantId(Long restaurantId);
+    public List<FoodCategory> getCategoriesByRestaurant(Long restaurantId) throws Exception;
 
     public FoodCategory findCategoryById(Long id) throws Exception;
 

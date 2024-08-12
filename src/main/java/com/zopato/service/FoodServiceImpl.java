@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.zopato.model.Food;
 import com.zopato.model.FoodCategory;
 import com.zopato.model.Restaurant;
-import com.zopato.reposetory.FoodRepository;
+import com.zopato.repository.FoodRepository;
 import com.zopato.request.CreateFoodRequest;
 
 @Service

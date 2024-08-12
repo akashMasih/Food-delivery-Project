@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.zopato.model.USER_ROLE;
 import com.zopato.model.User;
-import com.zopato.reposetory.UserRepository;
+import com.zopato.repository.UserRepository;
 
 @Service
 public class CustomUserDetailService implements UserDetailsService {

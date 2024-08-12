@@ -1,4 +1,4 @@
-package com.zopato.reposetory;
+package com.zopato.repository;
 
 import java.util.List;
 

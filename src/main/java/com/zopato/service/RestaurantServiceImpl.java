@@ -11,9 +11,9 @@ import com.zopato.dto.RestaurantDto;
 import com.zopato.model.Address;
 import com.zopato.model.Restaurant;
 import com.zopato.model.User;
-import com.zopato.reposetory.AddressRepository;
-import com.zopato.reposetory.RestaurantRepository;
-import com.zopato.reposetory.UserRepository;
+import com.zopato.repository.AddressRepository;
+import com.zopato.repository.RestaurantRepository;
+import com.zopato.repository.UserRepository;
 import com.zopato.request.CreateRestaurantRequest;
 
 @Service

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import com.zopato.service.FoodCategoryService;
 import com.zopato.service.UserService;
 
 @RestController
-@RequestMapping("/api/admin/foodCategory")
+@RequestMapping("/api")
 public class FoodCategoryController {
 
     @Autowired
@@ -26,7 +27,7 @@ public class FoodCategoryController {
     @Autowired
     private UserService userService;
 
-    @PostMapping
+    @PostMapping("admin/foodCategory")
     public ResponseEntity<FoodCategory> createFoodCategory(@RequestHeader("Authorization") String jwt,
             FoodCategory foodCategory)
             throws Exception {
@@ -38,9 +39,9 @@ public class FoodCategoryController {
         return new ResponseEntity<>(foodCategory1, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{foodCategoryId}")
+    @GetMapping("/foodCategory/{foodCategoryId}")
     public ResponseEntity<FoodCategory> getFoodCategoryById(@RequestHeader("Authorization") String jwt,
-            Long foodCategoryId) throws Exception {
+            @PathVariable Long foodCategoryId) throws Exception {
 
         User user = userService.getUserByJwtToken(jwt);
         FoodCategory foodCategory = foodCategoryService.findCategoryById(foodCategoryId);
@@ -49,13 +50,12 @@ public class FoodCategoryController {
 
     }
 
-    @GetMapping("/{foodCategoryId}")
-    public ResponseEntity<List<FoodCategory>> getFoodCategoryByRestaurantId(@RequestHeader("Authorization") String jwt,
-            Long restaurantId) throws Exception {
+    @GetMapping("/foodCategory/restaurant")
+    public ResponseEntity<List<FoodCategory>> getFoodCategoryByRestaurantId(@RequestHeader("Authorization") String jwt)
+            throws Exception {
 
         User user = userService.getUserByJwtToken(jwt);
-
-        List<FoodCategory> foodCategory = foodCategoryService.getCategoriesByRestaurantId(restaurantId);
+        List<FoodCategory> foodCategory = foodCategoryService.getCategoriesByRestaurant(user.getId());
         return new ResponseEntity<>(foodCategory, HttpStatus.OK);
 
     }

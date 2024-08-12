@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.zopato.model.FoodCategory;
 import com.zopato.model.Restaurant;
-import com.zopato.reposetory.FoodCategoryRepository;
+import com.zopato.repository.FoodCategoryRepository;
 
 @Service
 public class FoodCategoryServiceImpl implements FoodCategoryService {
@@ -31,9 +31,12 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
     }
 
     @Override
-    public List<FoodCategory> getCategoriesByRestaurantId(Long restaurantId) {
+    public List<FoodCategory> getCategoriesByRestaurant(Long userId) throws Exception {
 
-        return foodCategoryRepository.findByRestaurantId(restaurantId);
+        Restaurant restaurant = restaurantService.getRestaurantByUserId(userId);
+
+        return foodCategoryRepository.findByRestaurantId(restaurant.getId());
+
 
     }
 
